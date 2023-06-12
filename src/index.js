@@ -6,12 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App /> {/* Render the main App component */}
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root') // Mount the React app inside the HTML element with the id "root"
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
