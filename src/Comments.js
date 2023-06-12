@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 
 function Comments({ categoryComment, mov_id, handleAddComment }) {
-    console.log(handleAddComment)
-    const [newComment, setNewComment] = useState("")
-    console.log(newComment)
-    console.log(categoryComment);
+    console.log(handleAddComment) // Log the handleAddComment function to the console
+    const [newComment, setNewComment] = useState("") // State variable to store the new comment
+
+    console.log(newComment) // Log the value of newComment to the console
+    console.log(categoryComment) // Log the value of categoryComment to the console
+
     function handleSubmit(e) {
-        // debugger;
-        e.preventDefault();
+        e.preventDefault(); // Prevent the default form submission behavior
+
+        // Send a POST request to the server with the new comment data
         fetch(`http://localhost:9292/${categoryComment}`, {
             method: "post",
             headers: {
@@ -20,19 +23,22 @@ function Comments({ categoryComment, mov_id, handleAddComment }) {
             })
         }).then(resp => resp.json())
             .then(addcomment => {
-                handleAddComment(addcomment)
-                console.log(addcomment)
-                e.target.reset();
+                handleAddComment(addcomment) // Call the handleAddComment function and pass the newly added comment
+                console.log(addcomment) // Log the newly added comment to the console
+                e.target.reset(); // Reset the form after submission
             })
-        setNewComment(" ");
+
+        setNewComment(""); // Clear the newComment state after submission
     }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="comment" onChange={(e) => setNewComment(e.target.value)}></input>
-                <button type="submit">Submit</button>
+                <input type="text" name="comment" onChange={(e) => setNewComment(e.target.value)}></input> {/* Input field for entering the comment */}
+                <button type="submit">Submit</button> {/* Submit button */}
             </form>
         </div>
     )
 }
+
 export default Comments
