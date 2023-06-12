@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import Reviews from './Reviews';
-import './Review.css'
+import './Review.css';
 
 function MovieDetails({ category }) {
-    console.log(category)
+    console.log(category); // Log the value of the category prop
 
-    const getPath = window.location.pathname
-    const getPathId = parseInt(getPath.split("/").pop())
+    const getPath = window.location.pathname;
+    const getPathId = parseInt(getPath.split("/").pop());
 
+    console.log(getPath); // Log the value of the getPath variable
 
-    // debugger
-    console.log(getPath)
-    const [getMovie, setGetMovie] = useState([])
-    // console.log(window.location.pathname)
+    const [getMovie, setGetMovie] = useState([]);
+    
     useEffect(() => {
         fetch(`http://localhost:9292${getPath}`)
             .then(resp => resp.json())
-            .then(data => setGetMovie(data))
-    }, [])
+            .then(data => setGetMovie(data));
+    }, []);
 
+    const baseImageUrl = "https://image.tmdb.org/t/p/original/";
 
-    // const { id } = useParams()
-    // console.log(id);
-    // console.log(props.location)
-    const baseImageUrl = "https://image.tmdb.org/t/p/original/"
     return (
         <div style={{ backgroundColor: "black" }}>
             <div className="shadow" style={{ marginTop: "3rem", backgroundColor: "white", position: "relative" }}>
@@ -39,8 +35,7 @@ function MovieDetails({ category }) {
                 <Reviews movieId={getPathId} category={category} />
             </div>
         </div>
-    )
+    );
 }
 
-export default MovieDetails
-
+export default MovieDetails;
