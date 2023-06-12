@@ -7,7 +7,7 @@ function Banner({ fetchUrl }) {
         fetch(`${fetchUrl}`)
             .then(resp => resp.json())
             .then(data => setMovie(() => {
-                return data[Math.floor(Math.random() * data.length - 1)]
+               // return data[Math.floor(Math.random() * data.length - 1)]
             }))
     }, [fetchUrl])
     // console.log(movie)

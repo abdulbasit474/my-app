@@ -35,5 +35,4 @@ function Comments({ categoryComment, mov_id, handleAddComment }) {
         </div>
     )
 }
-
 export default Comments
